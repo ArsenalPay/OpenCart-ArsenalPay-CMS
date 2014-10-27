@@ -42,7 +42,7 @@ class ControllerPaymentArsenalpay extends Controller
 	$this->data['button_cancel'] = $this->language->get('button_cancel');
         
         $this->data['entry_completed_status'] = $this->language->get('entry_completed_status');
-        $this->data['entry_denied_status'] = $this->language->get('entry_denied_status');
+        $this->data['entry_canceled_status'] = $this->language->get('entry_canceled_status');
         $this->data['entry_failed_status'] = $this->language->get('entry_failed_status');
         $this->data['entry_waiting_status'] = $this->language->get('entry_waiting_status');
         
@@ -205,10 +205,10 @@ class ControllerPaymentArsenalpay extends Controller
                 $this->data['arsenalpay_completed_status_id'] = $this->config->get('arsenalpay_completed_status_id');
         }
         
-        if (isset($this->request->post['arsenalpay_denied_status_id'])) {
-                $this->data['arsenalpay_denied_status_id'] = $this->request->post['arsenalpay_denied_status_id'];
+        if (isset($this->request->post['arsenalpay_canceled_status_id'])) {
+                $this->data['arsenalpay_canceled_status_id'] = $this->request->post['arsenalpay_canceled_status_id'];
         } else {
-                $this->data['arsenalpay_denied_status_id'] = $this->config->get('arsenalpay_denied_status_id');
+                $this->data['arsenalpay_canceled_status_id'] = $this->config->get('arsenalpay_canceled_status_id');
         }
         
         if (isset($this->request->post['arsenalpay_failed_status_id'])) {
@@ -221,6 +221,12 @@ class ControllerPaymentArsenalpay extends Controller
                 $this->data['arsenalpay_waiting_status_id'] = $this->request->post['arsenalpay_waiting_status_id'];
         } else {
                 $this->data['arsenalpay_waiting_status_id'] = $this->config->get('arsenalpay_waiting_status_id');
+        }
+        
+        if (isset($this->request->post['arsenalpay_debug'])) {
+                $this->data['arsenalpay_debug'] = $this->request->post['arsenalpay_debug'];
+        } else {
+                $this->data['arsenalpay_debug'] = $this->config->get('arsenalpay_debug');
         }
        // $this->data['cancel_url'] = HTTPS_CATALOG . 'index.php?route=payment/arsenalpay/ap_cancel';
        // $this->data['error_url'] = HTTPS_CATALOG . 'index.php?route=payment/arsenalpay/ap_error';

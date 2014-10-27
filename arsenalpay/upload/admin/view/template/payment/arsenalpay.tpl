@@ -95,11 +95,11 @@
             </td>
         </tr>
           <tr>
-                <td><?php echo $entry_denied_status; ?></td>
+                <td><?php echo $entry_canceled_status; ?></td>
                 <td>
-                    <select name="arsenalpay_denied_status_id">
+                    <select name="arsenalpay_canceled_status_id">
                         <?php foreach ($order_statuses as $order_status) { ?>
-                            <?php if ($order_status['order_status_id'] == $arsenalpay_denied_status_id) { ?>
+                            <?php if ($order_status['order_status_id'] == $arsenalpay_canceled_status_id) { ?>
                                 <option value="<?php echo $order_status['order_status_id']; ?>" selected="selected"><?php echo $order_status['name']; ?></option>
                             <?php } else { ?>
                                 <option value="<?php echo $order_status['order_status_id']; ?>"><?php echo $order_status['name']; ?></option>
