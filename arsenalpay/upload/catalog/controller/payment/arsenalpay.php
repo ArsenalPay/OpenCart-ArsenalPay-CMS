@@ -60,10 +60,10 @@ class ControllerPaymentArsenalpay extends Controller {
            
             $keyArray = array
             (
-                'ID',           /* �?дентификатор ТСП/ merchant identifier */
+                'ID',           /* Идентификатор ТСП/ merchant identifier */
                 'FUNCTION',     /* Тип запроса/ type of request to which the response is received*/
-                'RRN',          /* �?дентификатор транзакции/ transaction identifier */
-                'PAYER',        /* �?дентификатор плательщика/ payer(customer) identifier */
+                'RRN',          /* Идентификатор транзакции/ transaction identifier */
+                'PAYER',        /* Идентификатор плательщика/ payer(customer) identifier */
                 'AMOUNT',       /* Сумма платежа/ payment amount */
                 'ACCOUNT',      /* Номер получателя платежа (номер заказа, номер ЛС) на стороне ТСП/ order number */
                 'STATUS',       /* Статус платежа - check - запрос на проверку номера получателя : payment - запрос на передачу статуса платежа
@@ -109,18 +109,11 @@ class ControllerPaymentArsenalpay extends Controller {
             */
             if( !( $this->_checkSign( $this->request->post, $KEY) ) ) 
             {
-                //============== For testing, delete after testing =============================
-                  $S=md5(md5($this->request->post['ID']).
-                            md5($this->request->post['FUNCTION']).md5($this->request->post['RRN']).
-                          md5($this->request->post['PAYER']).md5($this->request->post['AMOUNT']).md5($this->request->post['ACCOUNT']).
-                           md5($this->request->post['STATUS']).md5($KEY) );
-                  echo $S.'</br>';
-                //======================================
                 $this->exitf( 'ERR_INVALID_SIGN' );
 
             }
             
-            if( $this->request->post['FUNCTION'] == "check" )
+            if( $this->request->post['FUNCTION'] == "check" && $this->request->post['STATUS'] == "check" )
                 {
                     // Check account
                     /*

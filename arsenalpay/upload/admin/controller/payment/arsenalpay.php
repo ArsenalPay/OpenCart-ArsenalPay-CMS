@@ -20,10 +20,10 @@ class ControllerPaymentArsenalpay extends Controller
         $this->data['text_mk'] = $this->language->get('text_mk');
         $this->data['text_card'] = $this->language->get('text_card');
         $this->data['text_yes'] = $this->language->get('text_yes');
-	$this->data['text_no'] = $this->language->get('text_no');
+		$this->data['text_no'] = $this->language->get('text_no');
         
         $this->data['entry_ap_token'] = $this->language->get('entry_ap_token');
-        $this->data['entry_other_code'] = $this->language->get('entry_other_code');
+        //$this->data['entry_other_code'] = $this->language->get('entry_other_code');
         $this->data['entry_key'] = $this->language->get('entry_key');
         $this->data['entry_ip'] = $this->language->get('entry_ip');
         $this->data['entry_callback_url'] = $this->language->get('entry_callback_url');
@@ -35,11 +35,11 @@ class ControllerPaymentArsenalpay extends Controller
         $this->data['entry_css'] = $this->language->get('entry_css');
         $this->data['entry_debug'] = $this->language->get('entry_debug');
         $this->data['entry_geo_zone'] = $this->language->get('entry_geo_zone');
-	$this->data['entry_status'] = $this->language->get('entry_status');
-	$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
+		$this->data['entry_status'] = $this->language->get('entry_status');
+		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
         
         $this->data['button_save'] = $this->language->get('button_save');
-	$this->data['button_cancel'] = $this->language->get('button_cancel');
+		$this->data['button_cancel'] = $this->language->get('button_cancel');
         
         $this->data['entry_completed_status'] = $this->language->get('entry_completed_status');
         $this->data['entry_canceled_status'] = $this->language->get('entry_canceled_status');
@@ -47,9 +47,9 @@ class ControllerPaymentArsenalpay extends Controller
         $this->data['entry_waiting_status'] = $this->language->get('entry_waiting_status');
         
         $this->data['help_ap_token'] = $this->language->get('help_ap_token');
-        $this->data['help_other_code'] = $this->language->get('help_other_code');
+        //$this->data['help_other_code'] = $this->language->get('help_other_code');
         $this->data['help_key'] = $this->language->get('help_key');
-	$this->data['help_ip'] = $this->language->get('help_ip');
+		$this->data['help_ip'] = $this->language->get('help_ip');
         $this->data['help_callback_url'] = $this->language->get('help_callback_url');
         $this->data['help_check_url'] = $this->language->get('help_check_url');
         $this->data['help_frame_url'] = $this->language->get('help_frame_url');
@@ -104,7 +104,7 @@ class ControllerPaymentArsenalpay extends Controller
         );
         
         $this->data['action'] = $this->url->link('payment/arsenalpay', 'token=' . $this->session->data['token'], 'SSL');
-	$this->data['cancel'] = $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL');
+		$this->data['cancel'] = $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL');
         
         if (isset($this->request->post['arsenalpay_ap_token'])) {
                 $this->data['arsenalpay_ap_token'] = $this->request->post['arsenalpay_ap_token'];
@@ -112,11 +112,11 @@ class ControllerPaymentArsenalpay extends Controller
                 $this->data['arsenalpay_ap_token'] = $this->config->get('arsenalpay_ap_token');
         }
         
-        if (isset($this->request->post['arsenalpay_other_code'])) {
+       /* if (isset($this->request->post['arsenalpay_other_code'])) {
                 $this->data['arsenalpay_other_code'] = $this->request->post['arsenalpay_other_code'];
         } else {
                 $this->data['arsenalpay_other_code'] = $this->config->get('arsenalpay_other_code');
-        }
+        }*/
         
         if (isset($this->request->post['arsenalpay_key'])) {
                 $this->data['arsenalpay_key'] = $this->request->post['arsenalpay_key'];
