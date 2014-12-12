@@ -60,11 +60,11 @@
             <td><?php echo $entry_src; ?><br /><span class="help"><?php echo $help_src ?></span></td>
             <td>
                 <select name="arsenalpay_src">
-                    <?php if ($arsenalpay_src == 'mk') { ?>
-                        <option value="mk"><?php echo $text_mk; ?></option>
+                    <?php if ($arsenalpay_src == 'card') { ?>
+                        <option value="mk" selected><?php echo $text_mk; ?></option>
                         <option value="card" selected="selected"><?php echo $text_card; ?></option>
                     <?php } else { ?>
-                        <option value="mk" selected="selected"><?php echo $text_mk; ?></option>
+						<option value="mk" selected="selected"><?php echo $text_mk; ?></option>
                         <option value="card"><?php echo $text_card; ?></option>
                     <?php } ?>
                 </select>
@@ -72,7 +72,17 @@
         </tr>
         <tr>
             <td><label for="arsenalpay_frame_mode"><?php echo $entry_frame_mode ?></label><br /><span class="help"><?php echo $help_frame_mode ?></span></td>
-            <td><input name="arsenalpay_frame_mode" value="<?php echo $arsenalpay_frame_mode ?>" id="arsenalpay_frame_mode" /></td>
+			<td>
+			<select name="arsenalpay_frame_mode">
+                    <?php if ($arsenalpay_frame_mode == '1') { ?>
+						<option value='0' selected><?php echo '0'; ?></option>
+                        <option value='1' selected="selected"><?php echo '1'; ?></option>
+                    <?php } else { ?>
+                        <option value='0' selected="selected"><?php echo '0'; ?></option>
+						<option value='1'><?php echo '1'; ?></option>
+                    <?php } ?>
+            </select>
+			</td>
         </tr>
         <tr>
             <td><label for="arsenalpay_frame_params"><?php echo $entry_frame_params ?></label><br /><span class="help"><?php echo $help_frame_params ?></span></td>
