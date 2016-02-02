@@ -134,6 +134,5 @@ ArsenalPay – увеличить прибыль просто!
 
 Всегда с радостью ждем ваших писем с предложениями. 
 
-pay@arsenalpay.ru 
-
+pay@arsenalpay.ru  
 [arsenalpay.ru](https://arsenalpay.ru)
