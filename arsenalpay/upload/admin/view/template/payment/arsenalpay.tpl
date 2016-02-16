@@ -23,12 +23,6 @@
               <span class="error"><?php echo $error_ap_token; ?></span>
               <?php } ?></td>
           </tr>
-		  
-          <!--<tr>
-            <td><?php echo $entry_other_code; ?><br /><span class="help"><?php echo $help_other_code ?></span></td>
-            <td><input type="text" name="arsenalpay_other_code" value="<?php echo $arsenalpay_other_code; ?>" /></td>
-          </tr>-->
-		  
           <tr>
             <td><span class="required">*</span> <?php echo $entry_key; ?><br /><span class="help"><?php echo $help_key ?></span></td>
             <td><input type="text" name="arsenalpay_key" value="<?php echo $arsenalpay_key; ?>" />

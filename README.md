@@ -7,7 +7,7 @@
 
 
 ## Version
-1.0.0
+1.0.1
 
 *Has been tested on OpenCart 1.5.x*
 
