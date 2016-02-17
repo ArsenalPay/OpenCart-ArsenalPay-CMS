@@ -1,4 +1,4 @@
-# ArsenalPay Module for OpenCart CMS
+# ArsenalPay Module for OpenCart 1.5.x CMS
 
 *Arsenal Media LLC*
 
