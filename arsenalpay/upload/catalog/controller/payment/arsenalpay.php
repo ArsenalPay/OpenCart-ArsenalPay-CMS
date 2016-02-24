@@ -7,7 +7,12 @@ class ControllerPaymentArsenalpay extends Controller {
         $order_info = $this->model_checkout_order->getOrder($order_id);
         $summ = $this->currency->format($order_info['total'], $order_info['currency_code'], false, false);
         $format_summ = number_format($summ, 2, '.', '');
-        
+
+        if (!$order_info['payment_address_2']) {
+            $address= $order_info['payment_address_1'] . ', ' . $order_info['payment_city'] . ', ' . $order_info['payment_zone'];
+        } else {
+            $address = $order_info['payment_address_1'] . ', ' . $order_info['payment_address_2'] . ', ' . $order_info['payment_city'] . ', ' . $order_info['payment_zone'];
+        }
         $url_params = array(
             'src' => $this->config->get('arsenalpay_src'),
             't' => $this->config->get('arsenalpay_ap_token'),
@@ -16,21 +21,27 @@ class ControllerPaymentArsenalpay extends Controller {
             'msisdn'=> $order_info['telephone'],
             'css' => $this->config->get('arsenalpay_css'),
             'frame' => $this->config->get('arsenalpay_frame_mode'),
+            'description' => '',
+            'full_name' => $order_info['payment_firstname'] . ' ' . $order_info['payment_lastname'],
+            'phone' => $order_info['telephone'],
+            'email' => $order_info['email'],
+            'address' => $address,
+            'other' => '',
         );
         $this->data['iframe_url'] = $this->config->get('arsenalpay_frame_url') . '?' .http_build_query($url_params, '', '&');
-		$this->data['button_confirm'] = $this->language->get('button_confirm');
+        $this->data['button_confirm'] = $this->language->get('button_confirm');
         $this->data['iframe_params'] = $this->config->get('arsenalpay_frame_params');
 
 
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/arsenalpay_iframe.tpl')) {
-			$this->template = $this->config->get('config_template') . '/template/payment/arsenalpay_iframe.tpl';
+        if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/arsenalpay_iframe.tpl')) {
+            $this->template = $this->config->get('config_template') . '/template/payment/arsenalpay_iframe.tpl';
                         
-		} else {
-			$this->template = 'default/template/payment/arsenalpay_iframe.tpl';
-		}	
+        } else {
+            $this->template = 'default/template/payment/arsenalpay_iframe.tpl';
+        }   
 
-		$this->render(); 
-	}
+        $this->render(); 
+    }
         
     public function ap_callback() {
         $this->load->model('payment/arsenalpay');
@@ -165,7 +176,7 @@ class ControllerPaymentArsenalpay extends Controller {
             }
     }
 
-	private function _checkSign( $ars_callback, $pass)
+    private function _checkSign( $ars_callback, $pass)
         {
             $validSign = ( $ars_callback['SIGN'] === md5(md5($ars_callback['ID']).
                     md5($ars_callback['FUNCTION']).md5($ars_callback['RRN']).
